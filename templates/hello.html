@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <title>Blood Cells detection and classification</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="h2 mb-3 mt-3">Ứng dụng minh họa</h1>
+        <h2 class="h4 mb-3">ÁP DỤNG KỸ THUẬT HỌC SÂU
+            HỖ TRỢ PHÁT HIỆN VÀ PHÂN LOẠI TẾ BÀO MÁU THEO HÌNH DẠNG
+        </h2>
+
+        <div class="row">
+            <form class="form-signin col-sm-6 col-lg-5" method=post enctype=multipart/form-data>
+                <input type="file" name="file" class="form-control-file" id="inputfile" onchange="preview_image(event)">
+
+                <br />
+
+                <h4 class="h4 font-weight-normal">Các nhóm tế bào cần phát hiện</h4>
+                <div class="h6 font-weight-normal mb-3">
+                    <label class="container-checkbox">Hồng cầu
+                        <input type="checkbox" id="rbc" onclick="checkRBC()">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container-checkbox">Bạch cầu
+                        <input type="checkbox" id="wbc" onclick="checkWBC()">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container-checkbox">Tiểu cầu
+                        <input type="checkbox" id="platelet">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <br />
+
+                <h4 class="h4 font-weight-normal">Các nhóm tế bào cần phân loại</h4>
+                <div class="h6 font-weight-normal mb-3">
+                    <label class="container-checkbox">Hồng cầu
+                        <input type="checkbox" id="clsRBC" disabled>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container-checkbox">Bạch cầu
+                        <input type="checkbox" id="clsWBC" disabled>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <br />
+
+                <button id="my-btn" class="btn btn-lg btn-primary btn-block" type="submit" disabled>Chạy mô
+                    hình</button>
+                <p class="mt-5 mb-3 text-muted">Powered by PyTorch, Flask, and Bootstrap.</p>
+                <div class="row">
+                    <div class="col-3 align-self-center">
+                        <img src="/static/pytorch.png" alt="Pytorch Logo" height="70">
+                    </div>
+                    <div class="col-6 align-self-center">
+                        <img src="/static/flask.png" alt="Flask Logo" height="70">
+                    </div>
+                    <div class="col-3 align-self-center">
+                        <img src="/static/bs.png" alt="Bootstrap Logo" height="70">
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-sm-6 col-lg-7 align-self-center">
+                <img id="output-image" src="/static/image-preview.png" class="rounded mx-auto d-block" />
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function preview_image(event) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                let output = document.getElementById("output-image");
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+            document.getElementById("my-btn").disabled = false;
+        }
+        function checkRBC(event) {
+            let clsRbc = document.getElementById("clsRBC");
+            if (document.getElementById("rbc").checked) {
+                clsRbc.disabled = false;
+            } else {
+                clsRbc.disabled = true;
+                clsRbc.checked = false;
+            }
+        }
+        function checkWBC(event) {
+            let clsWbc = document.getElementById("clsWBC");
+            if (document.getElementById("wbc").checked) {
+                clsWbc.disabled = false;
+            } else {
+                clsWbc.disabled = true;
+                clsWbc.checked = false;
+            }
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
