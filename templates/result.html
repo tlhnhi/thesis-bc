@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if preds == None %}
+<div class="text-center">
+    <p class="h4 mt-4 mb-3">Không thể phát hiện tế bào máu, có thể do hình ảnh lam máu không đáp ứng yêu cầu.</p>
+    <img id="output-image" src="data:;base64,{{ image }}" class="rounded mx-auto d-block" />
+</div>
+{% else %}
+<p>Hiển thị kết quả</p>
+
+{% endif %}
+
+{% endblock %}

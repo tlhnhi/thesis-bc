@@ -69,3 +69,13 @@
 .card {
   border: 2px solid rgba(0, 0, 0, 0.125);
 }
+
+#preview-image {
+  max-height: 450px;
+  max-width: 600px;
+}
+
+#output-image {
+  max-height: 600px;
+  max-width: 900px;
+}
