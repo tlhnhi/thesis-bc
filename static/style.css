@@ -79,3 +79,11 @@
   max-height: 600px;
   max-width: 900px;
 }
+
+.tab-content .card img {
+  max-height: 150px;
+}
+
+.tab-content .card {
+  height: 275px;
+}

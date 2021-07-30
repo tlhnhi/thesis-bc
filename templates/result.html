@@ -1,13 +1,98 @@
 {% extends "layout.html" %}
 {% block content %}
 
-{% if preds == None %}
-<div class="text-center">
-    <p class="h4 mt-4 mb-3">Không thể phát hiện tế bào máu, có thể do hình ảnh lam máu không đáp ứng yêu cầu.</p>
-    <img id="output-image" src="data:;base64,{{ image }}" class="rounded mx-auto d-block" />
+<div class="text-center mt-3">
+    <img id="output-image" src="data:;base64,{{ img_b64 }}" class="rounded mx-auto d-block" />
 </div>
+
+{% if preds == None %}
+
+<div class="text-center">
+    <p class="h4 mt-3 mb-3">Không thể phát hiện tế bào máu, có thể do hình ảnh lam máu không đáp ứng yêu cầu.</p>
+</div>
+
 {% else %}
-<p>Hiển thị kết quả</p>
+
+<div class="card text-center mt-4">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#rbc">Hồng cầu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#wbc">Bạch cầu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#platelet">Tiểu cầu</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body tab-content">
+        <div id="rbc" class="container tab-pane active">
+            <br />
+            {% if "rbc" not in preds %}
+            Không phát hiện hồng cầu
+
+            {% else %}
+            <div class="row">
+                {% for cell in preds.rbc %}
+                <div class="col-md-3 col-lg-2 pl-2 pr-2">
+                    <div class="card mb-3">
+                        <img src="data:;base64,{{ cell['img'] }}" class="card-img-top" alt="rbc">
+                        <div class="card-body">
+                            <p class="card-text">Độ tin cậy: {{cell['dscore']}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% endif %}
+        </div>
+        <div id="wbc" class="tab-pane fade">
+            <br />
+            {% if "wbc" not in preds %}
+            Không phát hiện bạch cầu
+
+            {% else %}
+            <div class="row">
+                {% for cell in preds.wbc %}
+                <div class="col-md-3 col-lg-2 pl-2 pr-2">
+                    <div class="card mb-3">
+                        <img src="data:;base64,{{ cell['img'] }}" class="card-img-top" alt="wbc">
+                        <div class="card-body">
+                            <p class="card-text">Độ tin cậy: {{cell['dscore']}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% endif %}
+        </div>
+        <div id="platelet" class="tab-pane fade">
+            <br />
+            {% if "platelet" not in preds %}
+            Không phát hiện tiểu cầu
+
+            {% else %}
+            <div class="row">
+                {% for cell in preds.platelet %}
+                <div class="col-md-3 col-lg-2 pl-2 pr-2">
+                    <div class="card mb-3">
+                        <img src="data:;base64,{{ cell['img'] }}" class="card-img-top" alt="platelet">
+                        <div class="card-body">
+                            <p class="card-text">Độ tin cậy: {{cell['dscore']}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 {% endif %}
 

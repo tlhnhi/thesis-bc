@@ -9,7 +9,7 @@
 
                 <li class="list-group-item">
                     <h2 class="h4 font-weight-normal ">Vui lòng chọn ảnh lam máu</h2>
-                    <input type="file" name="file" class="form-control-file" id="input-file"
+                    <input type="file" name="file" class="form-control-file" id="input-file" accept="image/*"
                         onchange="preview_image(event)">
                 </li>
 
@@ -17,17 +17,18 @@
                     <h4 class="h4 font-weight-normal">Các nhóm tế bào cần phát hiện</h4>
                     <div class="font-weight-normal">
                         <label class="container-checkbox">Hồng cầu
-                            <input type="checkbox" id="rbc" onclick="checkRBC()">
+                            <input type="checkbox" id="rbc" name="detection" value="rbc" onclick="checkRBC()">
                             <span class="checkmark"></span>
                         </label>
 
                         <label class="container-checkbox">Bạch cầu
-                            <input type="checkbox" id="wbc" onclick="checkWBC()">
+                            <input type="checkbox" id="wbc" name="detection" value="wbc" onclick="checkWBC()">
                             <span class="checkmark"></span>
                         </label>
 
                         <label class="container-checkbox">Tiểu cầu
-                            <input type="checkbox" id="platelet" onclick="checkPlatelet()">
+                            <input type="checkbox" id="platelet" name="detection" value="platelet"
+                                onclick="checkPlatelet()">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -37,12 +38,12 @@
                     <h4 class="h4 font-weight-normal">Các nhóm tế bào cần phân loại</h4>
                     <div class="font-weight-normal mb-1">
                         <label class="container-checkbox">Hồng cầu
-                            <input type="checkbox" id="clsRBC" disabled>
+                            <input type="checkbox" id="clsRBC" name="classification" value="rbc" disabled>
                             <span class="checkmark"></span>
                         </label>
 
                         <label class="container-checkbox">Bạch cầu
-                            <input type="checkbox" id="clsWBC" disabled>
+                            <input type="checkbox" id="clsWBC" name="classification" value="wbc" disabled>
                             <span class="checkmark"></span>
                         </label>
                     </div>
