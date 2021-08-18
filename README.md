@@ -32,6 +32,12 @@ pip install Flask
 ## Cách sử dụng
 
 - Clone repo này về máy và di chuyển vào thư mục repo
+
+```
+https://github.com/tlhnhi/thesis-bc
+cd thesis-bc
+```
+
 - Tải folder `weights` [tại đây](https://drive.google.com/drive/folders/16ysq-YQ4MJUHRfTvMHTj9TQhaKhn-hRJ) và chuyển vào thư mục chính của repo
 
 ```
