@@ -41,6 +41,11 @@
                         <img src="data:;base64,{{ cell['img'] }}" class="card-img-top" alt="rbc">
                         <div class="card-body">
                             <p class="card-text">Độ tin cậy: {{cell['dscore']}}</p>
+
+                            {% if "rbc" in cls_groups %}
+                            <p class="card-text">Phân loại: {{cell['cls']}} ({{cell['cscore']}})</p>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
@@ -62,6 +67,10 @@
                         <img src="data:;base64,{{ cell['img'] }}" class="card-img-top" alt="wbc">
                         <div class="card-body">
                             <p class="card-text">Độ tin cậy: {{cell['dscore']}}</p>
+
+                            {% if "wbc" in cls_groups %}
+                            <p class="card-text">Phân loại: {{cell['cls']}} ({{cell['cscore']}})</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

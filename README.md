@@ -9,7 +9,9 @@
 | 1753081    | Trần Lê Hồng Nhi |
 | 1753083    | Nguyễn Hưng Phát |
 
-## Thư viện hỗ trợ
+## Môi trường
+
+Web minh họa được phát triển bằng Python 3.9 với các thư viện hỗ trợ như sau:
 
 - **Pytorch**
 
@@ -30,18 +32,18 @@ pip install Flask
 ## Cách sử dụng
 
 - Clone repo này về máy và di chuyển vào thư mục repo
-- Tải file `R50_FPN_3x.pth` tại đây (_**chưa cập nhập url**_) và chuyển vào thư mục chính của repo
+- Tải folder `weights` [tại đây](https://drive.google.com/drive/folders/16ysq-YQ4MJUHRfTvMHTj9TQhaKhn-hRJ) và chuyển vào thư mục chính của repo
 
 ```
 - thesis-bc\
 |---- statis\
 |---- templates\
-|---- READEME.md
+|---- weights\
+|---- README.md
 |---- demo_app.py
-|---- R50_FPN_3x.pth
 ```
 
-- Export biến môi trường `FLASK_APP`
+- Export biến môi trường `FLASK_APP` (1 trong 3 cách)
   - Với Bash
   ```
   export FLASK_APP=demo_app.py
